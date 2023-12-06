@@ -1,3 +1,8 @@
+a {
+	text-decoration: none;
+	color: initial;
+}
+
 header {
 	height: 10vh;
 	box-shadow: 0px 1px 7px 0px #000000;
@@ -19,4 +24,8 @@ header {
 .shopping-icon:hover {
 	background-color: lightgray;
 	border-radius: 15px;
+}
+
+.main-content {
+	text-align: center;
 }
