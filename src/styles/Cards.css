@@ -1,0 +1,16 @@
+.card {
+	border: 1px solid;
+}
+
+.card-image {
+	height: 11em;
+	margin-top: 1em;
+}
+
+.card-head {
+	text-align: center;
+}
+
+.card-button {
+	margin-bottom: 0.7em;
+}
