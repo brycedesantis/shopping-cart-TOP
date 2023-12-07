@@ -1,4 +1,5 @@
-.products-main-section {
+.products-main-section,
+.shopping-cart-products {
 	margin: 2em 4em;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);

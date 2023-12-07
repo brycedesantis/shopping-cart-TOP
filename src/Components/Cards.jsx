@@ -1,6 +1,6 @@
 import "../styles/Cards.css"
 
-function Card({ title, image, price, inCart = false }) {
+function Card({ title, image, price, inCart = false, onClick }) {
 	return (
 		<div className="card">
 			<img className="card-image" src={image} alt={title} />
@@ -12,7 +12,13 @@ function Card({ title, image, price, inCart = false }) {
 						{price}
 					</h3>
 				</div>
-				{inCart ? "" : <button className="card-button">Add to cart</button>}
+				{inCart ? (
+					""
+				) : (
+					<button onClick={onClick} className="card-button">
+						Add to cart
+					</button>
+				)}
 			</div>
 		</div>
 	)

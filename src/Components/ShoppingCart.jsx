@@ -5,11 +5,10 @@ function ShoppingCart() {
 	const [cartItems, setCartItems] = useState([])
 
 	async function getUserCart() {
+		const fetchedProducts = []
+
 		const cartResponse = await fetch("https://fakestoreapi.com/carts/1")
 		const data = await cartResponse.json()
-		const fetchedProducts = []
-		const toRender = []
-
 		for (let i = 0; i < data.products.length; i++) {
 			const productResponse = await fetch(
 				`https://fakestoreapi.com/products/${data.products[i].productId}`
@@ -23,8 +22,8 @@ function ShoppingCart() {
 				image: image,
 			})
 		}
-
-		setCartItems([...fetchedProducts])
+		const storage = localStorage.getItem("userCart")
+		setCartItems([...JSON.parse(storage)])
 	}
 
 	useEffect(() => getUserCart)

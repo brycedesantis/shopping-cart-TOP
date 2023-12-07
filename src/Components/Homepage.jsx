@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
 import Card from "./Cards"
 import "../styles/Homepage.css"
+import { saveLocal } from "../Helpers/LocalStorage"
 
 function Homepage() {
 	const [products, setProducts] = useState([])
+	const [sending, setSending] = useState(false)
 
 	async function getProducts() {
 		const fetchedProducts = []
 
 		const response = await fetch("https://fakestoreapi.com/products")
-		// const { id, title, description, price, image } = await response.json()
 		const data = await response.json()
 		for (let i = 0; i < data.length; i++) {
 			const { id, title, price, image } = data[i]
@@ -23,6 +24,19 @@ function Homepage() {
 		setProducts([...fetchedProducts])
 	}
 
+	function addedToCart(index) {
+		const sendable = [...products]
+		sendable[index].toSend = true
+		setProducts(sendable)
+	}
+
+	function sendToCart(index) {
+		setSending(true)
+		addedToCart(index)
+		saveLocal(products[index - 1])
+		console.log(products)
+	}
+
 	useEffect(() => getProducts)
 
 	return (
@@ -34,6 +48,7 @@ function Homepage() {
 						title={product.title}
 						image={product.image}
 						price={product.price}
+						onClick={() => sendToCart(product.id)}
 					/>
 				)
 			})}
