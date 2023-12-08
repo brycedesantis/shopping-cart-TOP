@@ -1,6 +1,6 @@
 import "../styles/Cards.css"
 
-function Card({ title, image, price, inCart = false, onClick }) {
+function Card({ title, image, price, inCart = false, onClick, quantity }) {
 	return (
 		<div className="card">
 			<img className="card-image" src={image} alt={title} />

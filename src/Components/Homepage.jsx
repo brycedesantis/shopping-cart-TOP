@@ -34,7 +34,6 @@ function Homepage() {
 		setSending(true)
 		addedToCart(index)
 		saveLocal(products[index - 1])
-		console.log(products)
 	}
 
 	useEffect(() => getProducts)
