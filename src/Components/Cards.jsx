@@ -13,7 +13,9 @@ function Card({ title, image, price, inCart = false, onClick, quantity }) {
 					</h3>
 				</div>
 				{inCart ? (
-					""
+					<button className="card-button" onClick={onClick}>
+						Remove from cart
+					</button>
 				) : (
 					<button onClick={onClick} className="card-button">
 						Add to cart

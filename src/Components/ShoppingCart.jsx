@@ -1,61 +1,36 @@
 import { useEffect, useState } from "react"
 import Card from "./Cards"
+import { getLocal, removeFromLocal } from "../Helpers/LocalStorage"
 
 function ShoppingCart() {
 	const [cartItems, setCartItems] = useState([])
 
 	function getUserCart() {
-		// const fetchedProducts = []
-
-		// const cartResponse = await fetch("https://fakestoreapi.com/carts/1")
-		// const data = await cartResponse.json()
-		// for (let i = 0; i < data.products.length; i++) {
-		// 	const productResponse = await fetch(
-		// 		`https://fakestoreapi.com/products/${data.products[i].productId}`
-		// 	)
-		// 	const pro = await productResponse.json()
-		// 	const { id, title, price, image } = pro
-		// 	fetchedProducts.push({
-		// 		id: id,
-		// 		title: title,
-		// 		price: price,
-		// 		image: image,
-		// 	})
-		// }
 		const storage = [...JSON.parse(localStorage.getItem("userCart"))]
-		let filtered = removeDuplicates(storage)
-		setCartItems([...filtered])
+		setCartItems([...storage])
 	}
 
-	function removeDuplicates(array) {
-		let newArray = []
-
-		let uniqueObject = {}
-
-		for (let i in array) {
-			let objId = array[i]["id"]
-
-			uniqueObject[objId] = array[i]
+	function removeFromCart(index) {
+		const cart = [...getLocal()]
+		let cartIndex = cartItems.at(index)
+		if (JSON.stringify(cartIndex) === JSON.stringify(cart[index])) {
+			removeFromLocal(index)
+			setCartItems(getLocal())
 		}
-
-		for (let i in uniqueObject) {
-			newArray.push(uniqueObject[i])
-		}
-
-		return newArray
 	}
 
 	useEffect(() => getUserCart, [])
 
 	return (
 		<div className="shopping-cart-products">
-			{cartItems.map((item) => {
+			{cartItems.map((item, index) => {
 				return (
 					<Card
 						key={item.id}
 						title={item.title}
 						image={item.image}
 						price={item.price}
+						onClick={() => removeFromCart(index)}
 						inCart={true}
 					/>
 				)
