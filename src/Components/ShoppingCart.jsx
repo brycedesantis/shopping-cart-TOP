@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import Card from "./Cards"
 import { getLocal, removeFromLocal } from "../Helpers/LocalStorage"
+import CardElement from "./Cards"
 
 function ShoppingCart() {
 	const [cartItems, setCartItems] = useState([])
@@ -25,7 +25,7 @@ function ShoppingCart() {
 		<div className="shopping-cart-products">
 			{cartItems.map((item, index) => {
 				return (
-					<Card
+					<CardElement
 						key={item.id}
 						title={item.title}
 						image={item.image}

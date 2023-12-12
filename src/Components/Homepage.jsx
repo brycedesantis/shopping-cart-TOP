@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import Card from "./Cards"
 import "../styles/Homepage.css"
 import { saveLocal } from "../Helpers/LocalStorage"
+import CardElement from "./Cards"
+import { SimpleGrid } from "@chakra-ui/react"
 
 function Homepage() {
 	const [products, setProducts] = useState([])
@@ -39,10 +40,28 @@ function Homepage() {
 	useEffect(() => getProducts)
 
 	return (
-		<div className="products-main-section">
+		// <div className="products-main-section">
+		// 	{products.map((product) => {
+		// 		return (
+		// 			<CardElement
+		// 				key={product.id}
+		// 				title={product.title}
+		// 				image={product.image}
+		// 				price={product.price}
+		// 				onClick={() => sendToCart(product.id)}
+		// 			/>
+		// 		)
+		// 	})}
+		// </div>
+		<SimpleGrid
+			my={8}
+			mx={16}
+			spacing={4}
+			templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+		>
 			{products.map((product) => {
 				return (
-					<Card
+					<CardElement
 						key={product.id}
 						title={product.title}
 						image={product.image}
@@ -51,7 +70,7 @@ function Homepage() {
 					/>
 				)
 			})}
-		</div>
+		</SimpleGrid>
 	)
 }
 
