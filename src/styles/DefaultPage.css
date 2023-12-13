@@ -1,0 +1,26 @@
+.slide-in-heading-first {
+	animation: slide-in-right 1s ease-in both;
+}
+
+.slide-in-heading-second {
+	animation: slide-in-right 1.5s ease-in both;
+}
+
+.slide-in-heading-third {
+	animation: slide-in-right 2s ease-in both;
+}
+
+.slide-in-right {
+	animation: slide-in-right 1s ease-in both;
+}
+
+@keyframes slide-in-right {
+	0% {
+		transform: translateX(1000px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}

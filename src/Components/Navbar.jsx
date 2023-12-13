@@ -1,9 +1,20 @@
 import { Outlet } from "react-router"
 import "../styles/Navbar.css"
 import { Link } from "react-router-dom"
-import { Button, Heading } from "@chakra-ui/react"
+import {
+	Button,
+	ButtonGroup,
+	Heading,
+	Icon,
+	IconButton,
+	useColorMode,
+} from "@chakra-ui/react"
+import { MoonIcon } from "@chakra-ui/icons"
+import { GiShoppingCart } from "@react-icons/all-files/gi/GiShoppingCart"
 
 function Navbar() {
+	const { colorMode, toggleColorMode } = useColorMode()
+
 	return (
 		<>
 			<header>
@@ -14,7 +25,12 @@ function Navbar() {
 						</Heading>
 					</Link>
 
-					<div className="links">
+					<ButtonGroup variant={"ghost"} colorScheme="blue">
+						<IconButton
+							onClick={toggleColorMode}
+							aria-label="Toggle light/dark mode"
+							icon={<MoonIcon w={7} h={7} />}
+						/>
 						<Button variant={"ghost"} colorScheme="blue">
 							<Link to={"homepage"}>
 								<Heading as={"h2"} noOfLines={1}>
@@ -25,10 +41,10 @@ function Navbar() {
 
 						<Button variant={"ghost"}>
 							<Link to="shopping-cart">
-								<span className="material-symbols-outlined">shopping_cart</span>
+								<Icon as={GiShoppingCart} w={9} h={9} />
 							</Link>
 						</Button>
-					</div>
+					</ButtonGroup>
 				</div>
 			</header>
 			<main className="main-content">
