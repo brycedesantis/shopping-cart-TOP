@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import App from "./App"
 import Homepage from "./Components/Homepage"
 import ShoppingCart from "./Components/ShoppingCart"
+import DefaultPage from "./Components/DefaultPage"
 
 function Router() {
 	const router = createBrowserRouter([
@@ -9,6 +10,7 @@ function Router() {
 			path: "/",
 			element: <App />,
 			children: [
+				{ index: true, element: <DefaultPage /> },
 				{
 					path: "homepage",
 					element: <Homepage />,

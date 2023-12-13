@@ -40,19 +40,6 @@ function Homepage() {
 	useEffect(() => getProducts)
 
 	return (
-		// <div className="products-main-section">
-		// 	{products.map((product) => {
-		// 		return (
-		// 			<CardElement
-		// 				key={product.id}
-		// 				title={product.title}
-		// 				image={product.image}
-		// 				price={product.price}
-		// 				onClick={() => sendToCart(product.id)}
-		// 			/>
-		// 		)
-		// 	})}
-		// </div>
 		<SimpleGrid
 			my={8}
 			mx={16}

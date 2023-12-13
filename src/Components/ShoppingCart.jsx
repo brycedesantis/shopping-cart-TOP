@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getLocal, removeFromLocal } from "../Helpers/LocalStorage"
 import CardElement from "./Cards"
+import { SimpleGrid } from "@chakra-ui/react"
 
 function ShoppingCart() {
 	const [cartItems, setCartItems] = useState([])
@@ -22,7 +23,12 @@ function ShoppingCart() {
 	useEffect(() => getUserCart, [])
 
 	return (
-		<div className="shopping-cart-products">
+		<SimpleGrid
+			my={8}
+			mx={16}
+			spacing={4}
+			templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+		>
 			{cartItems.map((item, index) => {
 				return (
 					<CardElement
@@ -35,7 +41,7 @@ function ShoppingCart() {
 					/>
 				)
 			})}
-		</div>
+		</SimpleGrid>
 	)
 }
 

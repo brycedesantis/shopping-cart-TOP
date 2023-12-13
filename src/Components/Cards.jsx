@@ -43,7 +43,7 @@ function CardElement({
 		// 	</div>
 		// </div>
 
-		<Card maxW="sm" size="sm" variant="outline">
+		<Card maxW="sm" size="sm" border={"1px"} borderColor={"blue.400"}>
 			<CardBody>
 				<Image m={"auto"} h="150px" src={image} alt={title} borderRadius="lg" />
 				<Stack mt="6" spacing="3">
