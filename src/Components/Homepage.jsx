@@ -11,7 +11,7 @@ function Homepage() {
 	async function getProducts() {
 		const fetchedProducts = []
 
-		const response = await fetch("https://fakestoreapi.com/products", { mode: "cors" })
+		const response = await fetch("https://fakestoreapi.com/products")
 		const data = await response.json()
 		for (let i = 0; i < data.length; i++) {
 			const { id, title, price, image } = data[i]
@@ -37,7 +37,7 @@ function Homepage() {
 		saveLocal(products[index - 1])
 	}
 
-	useEffect(() => getProducts)
+	useEffect(() => getProducts, [])
 
 	return (
 		<SimpleGrid
