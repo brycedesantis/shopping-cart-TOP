@@ -11,7 +11,7 @@ function Homepage() {
 	async function getProducts() {
 		const fetchedProducts = []
 
-		const response = await fetch("https://fakestoreapi.com/products")
+		const response = await fetch("https://fakestoreapi.com/products", { mode: "no-cors" })
 		const data = await response.json()
 		for (let i = 0; i < data.length; i++) {
 			const { id, title, price, image } = data[i]
