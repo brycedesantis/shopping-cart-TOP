@@ -37,7 +37,7 @@ function Homepage() {
 		saveLocal(products[index - 1])
 	}
 
-	useEffect(() => getProducts, [])
+	useEffect(() => getProducts)
 
 	return (
 		<SimpleGrid
